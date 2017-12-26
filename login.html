@@ -24,9 +24,13 @@
 <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 <script type="text/javascript">
+    var url = new URL(window.location.href);
+    var redirectUrl = url.searchParams.get("redirect_uri");
+    var token = url.searchParams.get("account_linking_token");
+
     // FirebaseUI config.
     var uiConfig = {
-        signInSuccessUrl: '<url-to-redirect-to-on-success>',
+        signInSuccessUrl: redirectUrl,
         signInOptions: [
             // Leave the lines as is for the providers you want to offer your users.
             firebase.auth.FacebookAuthProvider.PROVIDER_ID,
